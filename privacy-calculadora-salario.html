@@ -42,7 +42,7 @@
       border-bottom: 1px solid var(--border);
       padding: 3.5rem 6% 3rem;
     }
-    .breadcrumb { display: flex; align-items: center; gap: .5rem; font-size: .78rem; color: var(--muted); margin-bottom: 1.25rem; }
+    .breadcrumb { display: flex; align-items: center; gap: .5rem; font-size: .78rem; color: var(--muted); margin-bottom: 1.25rem; flex-wrap: wrap; }
     .breadcrumb a { color: var(--teal); text-decoration: none; }
     .breadcrumb a:hover { text-decoration: underline; }
     .breadcrumb span { color: var(--border); }
@@ -59,14 +59,11 @@
     .pp-meta-item strong { color: var(--text); }
 
     /* CONTENT */
-    .pp-content {
-      max-width: 820px; margin: 0 auto;
-      padding: 3.5rem 6%;
-    }
+    .pp-content { max-width: 820px; margin: 0 auto; padding: 3.5rem 6%; }
+
     .pp-toc {
       background: var(--card); border: 1px solid var(--border);
-      border-radius: 12px; padding: 1.5rem 1.75rem;
-      margin-bottom: 3rem;
+      border-radius: 12px; padding: 1.5rem 1.75rem; margin-bottom: 3rem;
     }
     .pp-toc h3 { color: var(--white); font-size: .9rem; margin-bottom: 1rem; }
     .pp-toc ol { padding-left: 1.2rem; }
@@ -81,15 +78,16 @@
       border-bottom: 1px solid var(--border);
       display: flex; align-items: center; gap: .6rem;
     }
-    .pp-section h2 .sec-num {
+    .sec-num {
       width: 28px; height: 28px; border-radius: 50%; flex-shrink: 0;
       background: rgba(0,180,166,.12); border: 1px solid rgba(0,180,166,.25);
       display: flex; align-items: center; justify-content: center;
       font-size: .75rem; color: var(--teal); font-weight: 700;
     }
     .pp-section p { color: var(--muted); font-size: .9rem; margin-bottom: .75rem; }
-    .pp-section ul, .pp-section ol { padding-left: 1.25rem; margin-bottom: .75rem; }
+    .pp-section ul { padding-left: 1.25rem; margin-bottom: .75rem; }
     .pp-section li { color: var(--muted); font-size: .9rem; margin-bottom: .4rem; }
+    .pp-section a { color: var(--teal); }
 
     .highlight-box {
       background: rgba(0,180,166,.07); border: 1px solid rgba(0,180,166,.22);
@@ -99,12 +97,28 @@
     }
     .highlight-box .hb-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: .05rem; }
 
+    .warning-box {
+      background: rgba(255,180,0,.06); border: 1px solid rgba(255,180,0,.2);
+      border-radius: 10px; padding: 1rem 1.25rem;
+      color: #f0c040; font-size: .88rem;
+      margin-bottom: .75rem; display: flex; align-items: flex-start; gap: .6rem;
+    }
+    .warning-box .hb-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: .05rem; }
+
+    .code-path {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 8px; padding: .65rem 1rem;
+      font-family: monospace; font-size: .85rem;
+      color: var(--teal); margin: .75rem 0;
+      letter-spacing: .3px;
+    }
+
     .contact-inline {
       background: var(--card); border: 1px solid var(--border);
       border-radius: 10px; padding: 1rem 1.25rem;
       display: flex; align-items: center; gap: .85rem;
       text-decoration: none; color: var(--text); font-size: .88rem;
-      transition: .25s; margin-top: .5rem;
+      transition: .25s; margin-top: .75rem;
     }
     .contact-inline:hover { border-color: var(--teal); color: var(--teal); }
 
@@ -113,7 +127,6 @@
     footer a { color: var(--teal); text-decoration: none; }
     footer p + p { margin-top: .4rem; }
 
-    /* RESPONSIVE */
     @media (max-width: 600px) {
       .pp-hero-inner { flex-direction: column; align-items: flex-start; }
       .pp-content { padding: 2.5rem 5%; }
@@ -140,8 +153,8 @@
     <div class="pp-hero-info">
       <h1>Política de Privacidade<br>Calculadora Salário Líquido 2026</h1>
       <div class="pp-meta">
-        <span class="pp-meta-item">🗓 <strong>Última atualização:</strong>&nbsp;Janeiro de 2026</span>
-        <span class="pp-meta-item">👤 <strong>Desenvolvedor:</strong>&nbsp;Bruno Melo – BRM DevStudio</span>
+        <span class="pp-meta-item">🗓 <strong>Última atualização:</strong>&nbsp;25 de fevereiro de 2026</span>
+        <span class="pp-meta-item">👤 <strong>Desenvolvedor:</strong>&nbsp;BRM DevStudio</span>
         <span class="pp-meta-item">📱 <strong>Plataforma:</strong>&nbsp;Android</span>
       </div>
     </div>
@@ -153,115 +166,80 @@
   <div class="pp-toc">
     <h3>📋 Sumário</h3>
     <ol>
-      <li><a href="#s1">Introdução</a></li>
-      <li><a href="#s2">Coleta de Dados</a></li>
-      <li><a href="#s3">Dados Inseridos pelo Usuário</a></li>
-      <li><a href="#s4">Permissões do Aplicativo</a></li>
-      <li><a href="#s5">Anúncios e Rastreamento</a></li>
-      <li><a href="#s6">Compartilhamento com Terceiros</a></li>
-      <li><a href="#s7">Segurança dos Dados</a></li>
-      <li><a href="#s8">Público-Alvo e Crianças</a></li>
-      <li><a href="#s9">Alterações nesta Política</a></li>
-      <li><a href="#s10">Contato</a></li>
+      <li><a href="#s1">Informações Gerais</a></li>
+      <li><a href="#s2">Coleta de Informações</a></li>
+      <li><a href="#s3">Uso de Serviços de Terceiros (Google AdMob)</a></li>
+      <li><a href="#s4">Controle de Anúncios</a></li>
+      <li><a href="#s5">Compartilhamento e Segurança</a></li>
+      <li><a href="#s6">Público-Alvo</a></li>
+      <li><a href="#s7">Contato</a></li>
     </ol>
   </div>
 
   <div class="pp-section" id="s1">
-    <h2><span class="sec-num">1</span> Introdução</h2>
-    <p>Esta Política de Privacidade descreve as práticas de coleta, uso e proteção de dados do aplicativo <strong style="color:var(--white)">Calculadora Salário Líquido 2026</strong>, desenvolvido por Bruno Melo sob a conta <strong style="color:var(--white)">BRM DevStudio</strong> na Google Play Store.</p>
-    <p>Ao utilizar este aplicativo, você concorda com os termos descritos nesta política. Caso não concorde, recomendamos que não utilize o aplicativo.</p>
+    <h2><span class="sec-num">1</span> Informações Gerais</h2>
+    <p>Esta Política de Privacidade descreve como o aplicativo <strong style="color:var(--white)">"Calculadora Salário Líquido 2026"</strong>, desenvolvido por <strong style="color:var(--white)">BRM DevStudio</strong>, trata as informações dos usuários. Nosso compromisso é garantir transparência e segurança no uso da ferramenta.</p>
   </div>
 
   <div class="pp-section" id="s2">
-    <h2><span class="sec-num">2</span> Coleta de Dados</h2>
+    <h2><span class="sec-num">2</span> Coleta de Informações</h2>
     <div class="highlight-box">
       <span class="hb-icon">🔒</span>
-      Este aplicativo NÃO coleta, armazena, transmite ou compartilha nenhum dado pessoal dos usuários. Ponto final.
+      O aplicativo NÃO coleta, armazena ou compartilha dados pessoais diretamente.
     </div>
-    <p>Todos os cálculos são realizados exclusivamente de forma local no dispositivo do usuário, sem nenhum tipo de comunicação com servidores externos, nuvem ou qualquer infraestrutura remota.</p>
+    <p>Não solicitamos, processamos ou temos acesso a:</p>
+    <ul>
+      <li>Nome, e-mail ou CPF;</li>
+      <li>Endereço ou dados de localização;</li>
+      <li>Dados bancários ou rendimentos fora do contexto da simulação.</li>
+    </ul>
+    <p>Todos os cálculos realizados no aplicativo são processados localmente no seu dispositivo e não são enviados para servidores externos.</p>
   </div>
 
   <div class="pp-section" id="s3">
-    <h2><span class="sec-num">3</span> Dados Inseridos pelo Usuário</h2>
-    <p>Os valores digitados pelo usuário durante o uso do aplicativo (como salário bruto, número de dependentes, benefícios como vale-transporte e vale-refeição, entre outros) são utilizados exclusivamente para a realização dos cálculos em tempo real.</p>
-    <p>Esses dados:</p>
+    <h2><span class="sec-num">3</span> Uso de Serviços de Terceiros (Google AdMob)</h2>
+    <div class="warning-box">
+      <span class="hb-icon">📢</span>
+      O aplicativo utiliza o serviço de publicidade <strong>Google AdMob</strong>, fornecido pela Google LLC, para exibição de anúncios.
+    </div>
+    <p>O Google AdMob pode coletar e utilizar automaticamente determinadas informações para fins publicitários, incluindo:</p>
     <ul>
-      <li>São processados inteiramente no dispositivo local;</li>
-      <li>Não são transmitidos para nenhum servidor externo;</li>
-      <li>Não são associados a nenhuma identidade ou conta de usuário;</li>
-      <li>Não são compartilhados com terceiros sob qualquer hipótese;</li>
-      <li>Não são salvos de forma permanente, salvo quando o próprio usuário utilizar alguma função de histórico ou salvamento local (se disponível).</li>
+      <li>Endereço IP;</li>
+      <li>Identificadores únicos de dispositivo (ID de publicidade);</li>
+      <li>Dados de uso e interações com os anúncios.</li>
     </ul>
+    <p>Essas informações são utilizadas exclusivamente para exibir anúncios (personalizados ou não), medir o desempenho das campanhas e prevenir atividades fraudulentas. Para mais detalhes, consulte a <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Política de Privacidade do Google</a>.</p>
   </div>
 
   <div class="pp-section" id="s4">
-    <h2><span class="sec-num">4</span> Permissões do Aplicativo</h2>
-    <p>O aplicativo solicita apenas as permissões mínimas necessárias para seu funcionamento básico no sistema Android. Especificamente:</p>
-    <ul>
-      <li><strong style="color:var(--text)">Câmera:</strong> Não solicitada.</li>
-      <li><strong style="color:var(--text)">Microfone:</strong> Não solicitado.</li>
-      <li><strong style="color:var(--text)">Localização:</strong> Não solicitada.</li>
-      <li><strong style="color:var(--text)">Contatos:</strong> Não solicitados.</li>
-      <li><strong style="color:var(--text)">Armazenamento:</strong> Não solicitado para fins de leitura ou escrita de arquivos externos.</li>
-      <li><strong style="color:var(--text)">Acesso à Internet:</strong> Não requerido para o funcionamento do aplicativo.</li>
-    </ul>
-    <p>Qualquer permissão futura necessária será devidamente explicada ao usuário no momento da solicitação.</p>
+    <h2><span class="sec-num">4</span> Controle de Anúncios</h2>
+    <p>O usuário tem total controle sobre a personalização de anúncios. Você pode desativar o rastreamento de anúncios diretamente nas configurações do seu Android em:</p>
+    <div class="code-path">Configurações → Google → Anúncios → Desativar personalização de anúncios</div>
+    <p>Ao desativar essa opção, os anúncios exibidos não serão personalizados com base no seu perfil de uso.</p>
   </div>
 
   <div class="pp-section" id="s5">
-    <h2><span class="sec-num">5</span> Anúncios e Rastreamento</h2>
-    <p>Este aplicativo <strong style="color:var(--white)">não exibe anúncios</strong> de nenhuma natureza e <strong style="color:var(--white)">não utiliza SDKs de rastreamento</strong>, analytics ou publicidade de terceiros, incluindo, mas não se limitando a:</p>
-    <ul>
-      <li>Google AdMob</li>
-      <li>Google Analytics / Firebase Analytics</li>
-      <li>Facebook Audience Network</li>
-      <li>AppsFlyer, Adjust ou similares</li>
-      <li>Qualquer outra solução de rastreamento comportamental</li>
-    </ul>
-    <p>O usuário pode utilizar o aplicativo com total tranquilidade, sem nenhum tipo de monitoramento de comportamento ou perfil publicitário.</p>
+    <h2><span class="sec-num">5</span> Compartilhamento e Segurança</h2>
+    <div class="highlight-box">
+      <span class="hb-icon">🛡️</span>
+      A BRM DevStudio não vende, aluga ou compartilha quaisquer informações dos usuários com terceiros.
+    </div>
+    <p>Como o app não coleta dados pessoais em servidores próprios, garantimos a privacidade integral das suas simulações financeiras.</p>
   </div>
 
   <div class="pp-section" id="s6">
-    <h2><span class="sec-num">6</span> Compartilhamento com Terceiros</h2>
-    <div class="highlight-box">
-      <span class="hb-icon">🚫</span>
-      Nenhum dado do usuário é compartilhado com terceiros. Não há parceiros, anunciantes ou outras partes que recebam informações provenientes deste aplicativo.
-    </div>
-    <p>Como o aplicativo não coleta dados, não há nada a ser compartilhado, vendido, licenciado ou transferido a qualquer entidade externa.</p>
+    <h2><span class="sec-num">6</span> Público-Alvo</h2>
+    <p>O aplicativo é destinado ao público geral interessado em simulações fiscais e está em conformidade com as diretrizes de utilidade da Google Play Store.</p>
   </div>
 
   <div class="pp-section" id="s7">
-    <h2><span class="sec-num">7</span> Segurança dos Dados</h2>
-    <p>Por não coletar nem transmitir dados, a superfície de exposição a riscos de segurança é mínima. Os cálculos realizados existem apenas na memória temporária do dispositivo durante a sessão de uso.</p>
-    <p>A segurança do próprio dispositivo (como senha de tela, PIN, biometria) é de responsabilidade do usuário e do sistema operacional Android.</p>
-  </div>
-
-  <div class="pp-section" id="s8">
-    <h2><span class="sec-num">8</span> Público-Alvo e Crianças</h2>
-    <p>Este aplicativo é destinado a adultos e trabalhadores brasileiros que desejam calcular seu salário líquido. Ele <strong style="color:var(--white)">não é direcionado a crianças menores de 13 anos</strong>.</p>
-    <p>Em conformidade com as diretrizes da Google Play e legislações aplicáveis (incluindo o ECA e a LGPD), não coletamos intencionalmente nenhum dado de menores de idade.</p>
-  </div>
-
-  <div class="pp-section" id="s9">
-    <h2><span class="sec-num">9</span> Alterações nesta Política</h2>
-    <p>Esta Política de Privacidade pode ser atualizada periodicamente para refletir mudanças no aplicativo, em legislações vigentes ou em práticas de privacidade.</p>
-    <p>Quando houver alterações relevantes:</p>
-    <ul>
-      <li>A data de "Última atualização" no topo desta página será modificada;</li>
-      <li>A descrição do aplicativo na Google Play Store também será atualizada;</li>
-      <li>Recomendamos que os usuários revisitem esta página periodicamente.</li>
-    </ul>
-    <p>O uso continuado do aplicativo após a publicação de alterações implica na aceitação dos novos termos.</p>
-  </div>
-
-  <div class="pp-section" id="s10">
-    <h2><span class="sec-num">10</span> Contato</h2>
-    <p>Caso tenha dúvidas, sugestões ou solicitações relacionadas a esta Política de Privacidade ou ao aplicativo, entre em contato:</p>
+    <h2><span class="sec-num">7</span> Contato</h2>
+    <p>Para dúvidas, sugestões ou suporte relacionados a esta política, entre em contato:</p>
     <a class="contact-inline" href="mailto:brmdevstudio@gmail.com">
       <span>✉️</span>
       <div>
         <strong style="color:var(--white); display:block; font-size:.88rem">brmdevstudio@gmail.com</strong>
-        <small style="color:var(--muted)">Respondemos em até 5 dias úteis</small>
+        <small style="color:var(--muted)">Responsável: BRM DevStudio</small>
       </div>
     </a>
   </div>
