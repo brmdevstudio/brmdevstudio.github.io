@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BRM DevStudio – Bruno Melo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:       #0a0f1e;
+      --surface:  #0d1b2a;
+      --card:     #112240;
+      --border:   #1e3a5f;
+      --teal:     #00b4a6;
+      --teal-dim: #007d73;
+      --blue:     #0a4d8c;
+      --text:     #ccd6f6;
+      --muted:    #8892b0;
+      --white:    #e6f1ff;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+
+    /* NAV */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(10,15,30,.88); backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 6%; display: flex; align-items: center;
+      justify-content: space-between; height: 64px;
+    }
+    .nav-brand { font-size: 1.2rem; font-weight: 800; color: var(--teal); text-decoration: none; }
+    .nav-brand span { color: var(--white); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-size: .88rem; transition: color .2s; }
+    .nav-links a:hover { color: var(--teal); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+    .hamburger span { width: 24px; height: 2px; background: var(--teal); border-radius: 2px; display: block; }
+
+    /* HERO */
+    .hero {
+      min-height: 92vh; display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center; padding: 6rem 6% 4rem;
+      background: radial-gradient(ellipse at 50% 0%, rgba(0,180,166,.10) 0%, transparent 60%);
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background: radial-gradient(circle at 80% 20%, rgba(10,77,140,.15) 0%, transparent 50%),
+                  radial-gradient(circle at 20% 80%, rgba(0,180,166,.07) 0%, transparent 50%);
+    }
+    .avatar {
+      width: 110px; height: 110px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--teal), var(--blue));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2rem; font-weight: 800; color: #fff;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 0 48px rgba(0,180,166,.4);
+      position: relative; z-index: 1;
+    }
+    .hero h1 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; color: var(--white); line-height: 1.15; position: relative; z-index: 1; }
+    .hero h1 span { color: var(--teal); }
+    .hero .subtitle { max-width: 540px; margin: 1rem auto 0; color: var(--muted); font-size: 1rem; position: relative; z-index: 1; }
+    .badge-row { display: flex; flex-wrap: wrap; gap: .6rem; justify-content: center; margin-top: 2rem; position: relative; z-index: 1; }
+    .badge { padding: .3rem .85rem; border-radius: 100px; font-size: .75rem; font-weight: 600; border: 1px solid var(--teal); color: var(--teal); background: rgba(0,180,166,.08); letter-spacing: .4px; }
+    .btn-row { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; margin-top: 2.5rem; position: relative; z-index: 1; }
+    .btn { display: inline-flex; align-items: center; gap: .5rem; padding: .75rem 2rem; border-radius: 8px; font-weight: 600; font-size: .92rem; text-decoration: none; transition: .25s; border: none; cursor: pointer; }
+    .btn-primary { background: var(--teal); color: #0a0f1e; box-shadow: 0 4px 24px rgba(0,180,166,.3); }
+    .btn-primary:hover { background: #00cfc0; transform: translateY(-2px); }
+    .btn-outline { border: 1px solid var(--border); color: var(--text); background: transparent; }
+    .btn-outline:hover { border-color: var(--teal); color: var(--teal); }
+
+    /* SECTIONS */
+    section { padding: 5rem 6%; }
+    .section-label { font-size: .75rem; font-weight: 700; letter-spacing: 2px; color: var(--teal); text-transform: uppercase; margin-bottom: .4rem; }
+    .section-title { font-size: clamp(1.4rem, 3vw, 1.9rem); font-weight: 700; color: var(--white); margin-bottom: .5rem; }
+    .section-divider { width: 44px; height: 3px; background: var(--teal); border-radius: 2px; margin-bottom: 2.5rem; }
+
+    /* ABOUT */
+    #about { background: var(--surface); }
+    .about-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 3rem; align-items: start; }
+    .about-text p { color: var(--muted); margin-bottom: .9rem; font-size: .94rem; }
+    .info-list { list-style: none; margin-top: 1.25rem; }
+    .info-list li { display: flex; gap: .75rem; align-items: flex-start; color: var(--muted); font-size: .88rem; padding: .5rem 0; border-bottom: 1px solid rgba(255,255,255,.05); }
+    .info-list li:last-child { border: none; }
+    .info-list li strong { color: var(--text); min-width: 100px; flex-shrink: 0; }
+    .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .stat-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; text-align: center; }
+    .stat-card .num { font-size: 1.9rem; font-weight: 800; color: var(--teal); }
+    .stat-card .lbl { color: var(--muted); font-size: .8rem; margin-top: .25rem; }
+
+    /* APPS */
+    #apps { background: var(--bg); }
+    .apps-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; }
+    .app-card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 1.75rem; transition: .3s; }
+    .app-card:hover { border-color: var(--teal); transform: translateY(-4px); box-shadow: 0 8px 32px rgba(0,180,166,.12); }
+    .app-icon { width: 56px; height: 56px; border-radius: 14px; background: linear-gradient(135deg, var(--teal-dim), var(--blue)); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: 1rem; }
+    .app-card h3 { color: var(--white); font-size: 1.02rem; margin-bottom: .4rem; }
+    .app-card p { color: var(--muted); font-size: .86rem; margin-bottom: 1rem; }
+    .app-tags { display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: 1.2rem; }
+    .tag { font-size: .7rem; padding: .2rem .6rem; background: rgba(0,180,166,.1); border: 1px solid rgba(0,180,166,.2); border-radius: 100px; color: var(--teal); }
+    .app-links { display: flex; gap: .65rem; }
+    .app-link { font-size: .8rem; font-weight: 600; text-decoration: none; padding: .42rem .85rem; border-radius: 7px; transition: .2s; }
+    .app-link.primary { background: var(--teal); color: #0a0f1e; }
+    .app-link.primary:hover { background: #00cfc0; }
+    .app-link.secondary { border: 1px solid var(--border); color: var(--muted); }
+    .app-link.secondary:hover { border-color: var(--teal); color: var(--teal); }
+
+    /* PRIVACY INDEX SECTION */
+    #privacy { background: var(--surface); }
+    .privacy-index-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.25rem; }
+    .privacy-index-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 14px; padding: 1.5rem;
+      display: flex; align-items: center; gap: 1rem;
+      text-decoration: none; transition: .3s;
+    }
+    .privacy-index-card:hover { border-color: var(--teal); transform: translateY(-3px); box-shadow: 0 6px 24px rgba(0,180,166,.1); }
+    .pi-icon { width: 48px; height: 48px; border-radius: 12px; background: linear-gradient(135deg, var(--teal-dim), var(--blue)); display: flex; align-items: center; justify-content: center; font-size: 1.3rem; flex-shrink: 0; }
+    .pi-info h4 { color: var(--white); font-size: .92rem; margin-bottom: .2rem; }
+    .pi-info small { color: var(--muted); font-size: .75rem; }
+    .pi-arrow { margin-left: auto; color: var(--teal); font-size: 1.1rem; flex-shrink: 0; }
+
+    /* CONTACT */
+    #contact { background: var(--bg); text-align: center; }
+    .contact-inner { max-width: 520px; margin: 0 auto; }
+    .contact-inner > p { color: var(--muted); margin-bottom: 1.75rem; }
+    .contact-box { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 2rem; display: flex; flex-direction: column; gap: .75rem; }
+    .contact-link { display: flex; align-items: center; gap: .85rem; padding: .85rem 1.2rem; border-radius: 10px; border: 1px solid var(--border); color: var(--text); text-decoration: none; font-size: .88rem; transition: .25s; text-align: left; }
+    .contact-link:hover { border-color: var(--teal); color: var(--teal); }
+    .contact-link .ci { font-size: 1.1rem; flex-shrink: 0; }
+
+    /* FOOTER */
+    footer { background: var(--surface); border-top: 1px solid var(--border); text-align: center; padding: 2rem 6%; color: var(--muted); font-size: .82rem; }
+    footer a { color: var(--teal); text-decoration: none; }
+    footer p + p { margin-top: .4rem; }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .nav-links { display: none; flex-direction: column; gap: 1rem; position: absolute; top: 64px; left: 0; right: 0; background: rgba(10,15,30,.97); border-bottom: 1px solid var(--border); padding: 1.5rem 6%; }
+      .nav-links.open { display: flex; }
+      .hamburger { display: flex; }
+      .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+    }
+    @media (max-width: 480px) {
+      .stats-grid { grid-template-columns: 1fr 1fr; }
+      .btn-row { flex-direction: column; align-items: center; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-brand" href="index.html"><span>BRM</span> DevStudio</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#about">Sobre</a></li>
+    <li><a href="#apps">Apps</a></li>
+    <li><a href="#privacy">Privacidade</a></li>
+    <li><a href="#contact">Contato</a></li>
+  </ul>
+  <button class="hamburger" onclick="toggleNav()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<section class="hero">
+  <div class="avatar">BM</div>
+  <h1>Bruno Melo<br><span>BRM DevStudio</span></h1>
+  <p class="subtitle">Desenvolvedor Android independente criando aplicativos práticos, rápidos e que respeitam a sua privacidade.</p>
+  <div class="badge-row">
+    <span class="badge">Android</span>
+    <span class="badge">Kotlin</span>
+    <span class="badge">Google Play</span>
+    <span class="badge">Material Design</span>
+    <span class="badge">Privacidade First</span>
+  </div>
+  <div class="btn-row">
+    <a class="btn btn-primary" href="#apps">&#9654; Ver Aplicativos</a>
+    <a class="btn btn-outline" href="#contact">Entrar em Contato</a>
+  </div>
+</section>
+
+<section id="about">
+  <p class="section-label">Sobre</p>
+  <h2 class="section-title">Olá, sou Bruno Melo</h2>
+  <div class="section-divider"></div>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>Sou desenvolvedor Android independente apaixonado por criar ferramentas que simplificam o dia a dia das pessoas. Trabalho sob a marca <strong style="color:var(--teal)">BRM DevStudio</strong> no Google Play Store.</p>
+      <p>Meu foco é entregar aplicativos leves, intuitivos e atualizados com informações relevantes para o contexto brasileiro — sem anúncios invasivos e sempre respeitando a privacidade dos usuários.</p>
+      <ul class="info-list">
+        <li><strong>Desenvolvedor:</strong> Bruno Melo</li>
+        <li><strong>Conta Play:</strong> BRM DevStudio</li>
+        <li><strong>Plataforma:</strong> Android / Google Play</li>
+        <li><strong>Foco:</strong> Brasil 🇧🇷</li>
+        <li><strong>Princípio:</strong> Privacidade em primeiro lugar</li>
+      </ul>
+    </div>
+    <div class="stats-grid">
+      <div class="stat-card"><div class="num">1+</div><div class="lbl">Apps Publicados</div></div>
+      <div class="stat-card"><div class="num">🇧🇷</div><div class="lbl">Foco no Brasil</div></div>
+      <div class="stat-card"><div class="num">0</div><div class="lbl">Dados Coletados</div></div>
+      <div class="stat-card"><div class="num">100%</div><div class="lbl">Independente</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="apps">
+  <p class="section-label">Portfólio</p>
+  <h2 class="section-title">Nossos Aplicativos</h2>
+  <div class="section-divider"></div>
+  <div class="apps-grid">
+    <div class="app-card">
+      <div class="app-icon">💰</div>
+      <h3>Calculadora Salário Líquido 2026</h3>
+      <p>Calcule seu salário líquido com as tabelas INSS e IRRF atualizadas para 2026. Simule descontos e benefícios para descobrir quanto você realmente vai receber.</p>
+      <div class="app-tags">
+        <span class="tag">Finanças</span>
+        <span class="tag">INSS</span>
+        <span class="tag">IRRF</span>
+        <span class="tag">CLT</span>
+        <span class="tag">2026</span>
+      </div>
+      <div class="app-links">
+        <a href="https://play.google.com/store/apps/developer?id=BRM+DevStudio" target="_blank" rel="noopener" class="app-link primary">&#9654; Google Play</a>
+        <a href="privacy-calculadora-salario.html" class="app-link secondary">Privacidade</a>
+      </div>
+    </div>
+    <div class="app-card" style="border-style:dashed; opacity:.45; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; min-height:220px; cursor:default;">
+      <div style="font-size:2rem; margin-bottom:.6rem;">🚀</div>
+      <p style="color:var(--muted); font-size:.88rem;">Novos apps em desenvolvimento.<br>Fique ligado!</p>
+    </div>
+  </div>
+</section>
+
+<section id="privacy">
+  <p class="section-label">Legal</p>
+  <h2 class="section-title">Políticas de Privacidade</h2>
+  <div class="section-divider"></div>
+  <div class="privacy-index-grid">
+    <a href="privacy-calculadora-salario.html" class="privacy-index-card">
+      <div class="pi-icon">💰</div>
+      <div class="pi-info">
+        <h4>Calculadora Salário Líquido 2026</h4>
+        <small>Atualizado em Janeiro de 2026</small>
+      </div>
+      <span class="pi-arrow">→</span>
+    </a>
+  </div>
+</section>
+
+<section id="contact">
+  <p class="section-label">Contato</p>
+  <h2 class="section-title">Fale Conosco</h2>
+  <div class="section-divider" style="margin: 0 auto 2rem"></div>
+  <div class="contact-inner">
+    <p>Sugestões, bugs ou dúvidas sobre nossos aplicativos? Estamos aqui para ajudar!</p>
+    <div class="contact-box">
+      <a class="contact-link" href="mailto:brmdevstudio@gmail.com">
+        <span class="ci">✉️</span> brmdevstudio@gmail.com
+      </a>
+      <a class="contact-link" href="https://play.google.com/store/apps/developer?id=BRM+DevStudio" target="_blank" rel="noopener">
+        <span class="ci">▶</span> BRM DevStudio no Google Play
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 <strong>BRM DevStudio</strong> · Desenvolvido por Bruno Melo · Todos os direitos reservados.</p>
+  <p><a href="#privacy">Políticas de Privacidade</a> &nbsp;·&nbsp; <a href="#contact">Contato</a> &nbsp;·&nbsp; <a href="https://play.google.com/store/apps/developer?id=BRM+DevStudio" target="_blank" rel="noopener">Google Play</a></p>
+</footer>
+
+<script>
+  function toggleNav() {
+    document.getElementById('navLinks').classList.toggle('open');
+  }
+  document.querySelectorAll('#navLinks a').forEach(a =>
+    a.addEventListener('click', () => document.getElementById('navLinks').classList.remove('open'))
+  );
+</script>
+</body>
+</html>

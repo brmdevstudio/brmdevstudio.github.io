@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Política de Privacidade – Calculadora Salário Líquido 2026 | BRM DevStudio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:       #0a0f1e;
+      --surface:  #0d1b2a;
+      --card:     #112240;
+      --border:   #1e3a5f;
+      --teal:     #00b4a6;
+      --teal-dim: #007d73;
+      --blue:     #0a4d8c;
+      --text:     #ccd6f6;
+      --muted:    #8892b0;
+      --white:    #e6f1ff;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+
+    /* NAV */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(10,15,30,.88); backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 6%; display: flex; align-items: center;
+      justify-content: space-between; height: 64px;
+    }
+    .nav-brand { font-size: 1.2rem; font-weight: 800; color: var(--teal); text-decoration: none; }
+    .nav-brand span { color: var(--white); }
+    .nav-back { display: flex; align-items: center; gap: .5rem; color: var(--muted); text-decoration: none; font-size: .88rem; transition: color .2s; }
+    .nav-back:hover { color: var(--teal); }
+
+    /* HERO */
+    .pp-hero {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 3.5rem 6% 3rem;
+    }
+    .breadcrumb { display: flex; align-items: center; gap: .5rem; font-size: .78rem; color: var(--muted); margin-bottom: 1.25rem; }
+    .breadcrumb a { color: var(--teal); text-decoration: none; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .breadcrumb span { color: var(--border); }
+    .pp-hero-inner { display: flex; align-items: center; gap: 1.25rem; }
+    .pp-app-icon {
+      width: 64px; height: 64px; border-radius: 16px; flex-shrink: 0;
+      background: linear-gradient(135deg, var(--teal-dim), var(--blue));
+      display: flex; align-items: center; justify-content: center; font-size: 1.8rem;
+      box-shadow: 0 4px 20px rgba(0,180,166,.25);
+    }
+    .pp-hero-info h1 { font-size: clamp(1.2rem, 3vw, 1.7rem); font-weight: 700; color: var(--white); margin-bottom: .3rem; }
+    .pp-meta { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: .6rem; }
+    .pp-meta-item { display: flex; align-items: center; gap: .35rem; font-size: .78rem; color: var(--muted); }
+    .pp-meta-item strong { color: var(--text); }
+
+    /* CONTENT */
+    .pp-content {
+      max-width: 820px; margin: 0 auto;
+      padding: 3.5rem 6%;
+    }
+    .pp-toc {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 12px; padding: 1.5rem 1.75rem;
+      margin-bottom: 3rem;
+    }
+    .pp-toc h3 { color: var(--white); font-size: .9rem; margin-bottom: 1rem; }
+    .pp-toc ol { padding-left: 1.2rem; }
+    .pp-toc li { margin-bottom: .4rem; }
+    .pp-toc a { color: var(--teal); font-size: .85rem; text-decoration: none; }
+    .pp-toc a:hover { text-decoration: underline; }
+
+    .pp-section { margin-bottom: 2.75rem; }
+    .pp-section h2 {
+      font-size: 1.05rem; font-weight: 700; color: var(--white);
+      margin-bottom: 1rem; padding-bottom: .6rem;
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; gap: .6rem;
+    }
+    .pp-section h2 .sec-num {
+      width: 28px; height: 28px; border-radius: 50%; flex-shrink: 0;
+      background: rgba(0,180,166,.12); border: 1px solid rgba(0,180,166,.25);
+      display: flex; align-items: center; justify-content: center;
+      font-size: .75rem; color: var(--teal); font-weight: 700;
+    }
+    .pp-section p { color: var(--muted); font-size: .9rem; margin-bottom: .75rem; }
+    .pp-section ul, .pp-section ol { padding-left: 1.25rem; margin-bottom: .75rem; }
+    .pp-section li { color: var(--muted); font-size: .9rem; margin-bottom: .4rem; }
+
+    .highlight-box {
+      background: rgba(0,180,166,.07); border: 1px solid rgba(0,180,166,.22);
+      border-radius: 10px; padding: 1rem 1.25rem;
+      color: var(--teal); font-weight: 600; font-size: .88rem;
+      margin-bottom: .75rem; display: flex; align-items: flex-start; gap: .6rem;
+    }
+    .highlight-box .hb-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: .05rem; }
+
+    .contact-inline {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 10px; padding: 1rem 1.25rem;
+      display: flex; align-items: center; gap: .85rem;
+      text-decoration: none; color: var(--text); font-size: .88rem;
+      transition: .25s; margin-top: .5rem;
+    }
+    .contact-inline:hover { border-color: var(--teal); color: var(--teal); }
+
+    /* FOOTER */
+    footer { background: var(--surface); border-top: 1px solid var(--border); text-align: center; padding: 2rem 6%; color: var(--muted); font-size: .82rem; }
+    footer a { color: var(--teal); text-decoration: none; }
+    footer p + p { margin-top: .4rem; }
+
+    /* RESPONSIVE */
+    @media (max-width: 600px) {
+      .pp-hero-inner { flex-direction: column; align-items: flex-start; }
+      .pp-content { padding: 2.5rem 5%; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-brand" href="index.html"><span>BRM</span> DevStudio</a>
+  <a class="nav-back" href="index.html">← Voltar ao site</a>
+</nav>
+
+<div class="pp-hero">
+  <div class="breadcrumb">
+    <a href="index.html">BRM DevStudio</a>
+    <span>/</span>
+    <a href="index.html#privacy">Políticas de Privacidade</a>
+    <span>/</span>
+    <span style="color:var(--text)">Calculadora Salário Líquido 2026</span>
+  </div>
+  <div class="pp-hero-inner">
+    <div class="pp-app-icon">💰</div>
+    <div class="pp-hero-info">
+      <h1>Política de Privacidade<br>Calculadora Salário Líquido 2026</h1>
+      <div class="pp-meta">
+        <span class="pp-meta-item">🗓 <strong>Última atualização:</strong>&nbsp;Janeiro de 2026</span>
+        <span class="pp-meta-item">👤 <strong>Desenvolvedor:</strong>&nbsp;Bruno Melo – BRM DevStudio</span>
+        <span class="pp-meta-item">📱 <strong>Plataforma:</strong>&nbsp;Android</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="pp-content">
+
+  <div class="pp-toc">
+    <h3>📋 Sumário</h3>
+    <ol>
+      <li><a href="#s1">Introdução</a></li>
+      <li><a href="#s2">Coleta de Dados</a></li>
+      <li><a href="#s3">Dados Inseridos pelo Usuário</a></li>
+      <li><a href="#s4">Permissões do Aplicativo</a></li>
+      <li><a href="#s5">Anúncios e Rastreamento</a></li>
+      <li><a href="#s6">Compartilhamento com Terceiros</a></li>
+      <li><a href="#s7">Segurança dos Dados</a></li>
+      <li><a href="#s8">Público-Alvo e Crianças</a></li>
+      <li><a href="#s9">Alterações nesta Política</a></li>
+      <li><a href="#s10">Contato</a></li>
+    </ol>
+  </div>
+
+  <div class="pp-section" id="s1">
+    <h2><span class="sec-num">1</span> Introdução</h2>
+    <p>Esta Política de Privacidade descreve as práticas de coleta, uso e proteção de dados do aplicativo <strong style="color:var(--white)">Calculadora Salário Líquido 2026</strong>, desenvolvido por Bruno Melo sob a conta <strong style="color:var(--white)">BRM DevStudio</strong> na Google Play Store.</p>
+    <p>Ao utilizar este aplicativo, você concorda com os termos descritos nesta política. Caso não concorde, recomendamos que não utilize o aplicativo.</p>
+  </div>
+
+  <div class="pp-section" id="s2">
+    <h2><span class="sec-num">2</span> Coleta de Dados</h2>
+    <div class="highlight-box">
+      <span class="hb-icon">🔒</span>
+      Este aplicativo NÃO coleta, armazena, transmite ou compartilha nenhum dado pessoal dos usuários. Ponto final.
+    </div>
+    <p>Todos os cálculos são realizados exclusivamente de forma local no dispositivo do usuário, sem nenhum tipo de comunicação com servidores externos, nuvem ou qualquer infraestrutura remota.</p>
+  </div>
+
+  <div class="pp-section" id="s3">
+    <h2><span class="sec-num">3</span> Dados Inseridos pelo Usuário</h2>
+    <p>Os valores digitados pelo usuário durante o uso do aplicativo (como salário bruto, número de dependentes, benefícios como vale-transporte e vale-refeição, entre outros) são utilizados exclusivamente para a realização dos cálculos em tempo real.</p>
+    <p>Esses dados:</p>
+    <ul>
+      <li>São processados inteiramente no dispositivo local;</li>
+      <li>Não são transmitidos para nenhum servidor externo;</li>
+      <li>Não são associados a nenhuma identidade ou conta de usuário;</li>
+      <li>Não são compartilhados com terceiros sob qualquer hipótese;</li>
+      <li>Não são salvos de forma permanente, salvo quando o próprio usuário utilizar alguma função de histórico ou salvamento local (se disponível).</li>
+    </ul>
+  </div>
+
+  <div class="pp-section" id="s4">
+    <h2><span class="sec-num">4</span> Permissões do Aplicativo</h2>
+    <p>O aplicativo solicita apenas as permissões mínimas necessárias para seu funcionamento básico no sistema Android. Especificamente:</p>
+    <ul>
+      <li><strong style="color:var(--text)">Câmera:</strong> Não solicitada.</li>
+      <li><strong style="color:var(--text)">Microfone:</strong> Não solicitado.</li>
+      <li><strong style="color:var(--text)">Localização:</strong> Não solicitada.</li>
+      <li><strong style="color:var(--text)">Contatos:</strong> Não solicitados.</li>
+      <li><strong style="color:var(--text)">Armazenamento:</strong> Não solicitado para fins de leitura ou escrita de arquivos externos.</li>
+      <li><strong style="color:var(--text)">Acesso à Internet:</strong> Não requerido para o funcionamento do aplicativo.</li>
+    </ul>
+    <p>Qualquer permissão futura necessária será devidamente explicada ao usuário no momento da solicitação.</p>
+  </div>
+
+  <div class="pp-section" id="s5">
+    <h2><span class="sec-num">5</span> Anúncios e Rastreamento</h2>
+    <p>Este aplicativo <strong style="color:var(--white)">não exibe anúncios</strong> de nenhuma natureza e <strong style="color:var(--white)">não utiliza SDKs de rastreamento</strong>, analytics ou publicidade de terceiros, incluindo, mas não se limitando a:</p>
+    <ul>
+      <li>Google AdMob</li>
+      <li>Google Analytics / Firebase Analytics</li>
+      <li>Facebook Audience Network</li>
+      <li>AppsFlyer, Adjust ou similares</li>
+      <li>Qualquer outra solução de rastreamento comportamental</li>
+    </ul>
+    <p>O usuário pode utilizar o aplicativo com total tranquilidade, sem nenhum tipo de monitoramento de comportamento ou perfil publicitário.</p>
+  </div>
+
+  <div class="pp-section" id="s6">
+    <h2><span class="sec-num">6</span> Compartilhamento com Terceiros</h2>
+    <div class="highlight-box">
+      <span class="hb-icon">🚫</span>
+      Nenhum dado do usuário é compartilhado com terceiros. Não há parceiros, anunciantes ou outras partes que recebam informações provenientes deste aplicativo.
+    </div>
+    <p>Como o aplicativo não coleta dados, não há nada a ser compartilhado, vendido, licenciado ou transferido a qualquer entidade externa.</p>
+  </div>
+
+  <div class="pp-section" id="s7">
+    <h2><span class="sec-num">7</span> Segurança dos Dados</h2>
+    <p>Por não coletar nem transmitir dados, a superfície de exposição a riscos de segurança é mínima. Os cálculos realizados existem apenas na memória temporária do dispositivo durante a sessão de uso.</p>
+    <p>A segurança do próprio dispositivo (como senha de tela, PIN, biometria) é de responsabilidade do usuário e do sistema operacional Android.</p>
+  </div>
+
+  <div class="pp-section" id="s8">
+    <h2><span class="sec-num">8</span> Público-Alvo e Crianças</h2>
+    <p>Este aplicativo é destinado a adultos e trabalhadores brasileiros que desejam calcular seu salário líquido. Ele <strong style="color:var(--white)">não é direcionado a crianças menores de 13 anos</strong>.</p>
+    <p>Em conformidade com as diretrizes da Google Play e legislações aplicáveis (incluindo o ECA e a LGPD), não coletamos intencionalmente nenhum dado de menores de idade.</p>
+  </div>
+
+  <div class="pp-section" id="s9">
+    <h2><span class="sec-num">9</span> Alterações nesta Política</h2>
+    <p>Esta Política de Privacidade pode ser atualizada periodicamente para refletir mudanças no aplicativo, em legislações vigentes ou em práticas de privacidade.</p>
+    <p>Quando houver alterações relevantes:</p>
+    <ul>
+      <li>A data de "Última atualização" no topo desta página será modificada;</li>
+      <li>A descrição do aplicativo na Google Play Store também será atualizada;</li>
+      <li>Recomendamos que os usuários revisitem esta página periodicamente.</li>
+    </ul>
+    <p>O uso continuado do aplicativo após a publicação de alterações implica na aceitação dos novos termos.</p>
+  </div>
+
+  <div class="pp-section" id="s10">
+    <h2><span class="sec-num">10</span> Contato</h2>
+    <p>Caso tenha dúvidas, sugestões ou solicitações relacionadas a esta Política de Privacidade ou ao aplicativo, entre em contato:</p>
+    <a class="contact-inline" href="mailto:brmdevstudio@gmail.com">
+      <span>✉️</span>
+      <div>
+        <strong style="color:var(--white); display:block; font-size:.88rem">brmdevstudio@gmail.com</strong>
+        <small style="color:var(--muted)">Respondemos em até 5 dias úteis</small>
+      </div>
+    </a>
+  </div>
+
+</div>
+
+<footer>
+  <p>© 2026 <strong>BRM DevStudio</strong> · Desenvolvido por Bruno Melo · Todos os direitos reservados.</p>
+  <p><a href="index.html">Início</a> &nbsp;·&nbsp; <a href="index.html#privacy">Políticas de Privacidade</a> &nbsp;·&nbsp; <a href="index.html#contact">Contato</a></p>
+</footer>
+
+</body>
+</html>
